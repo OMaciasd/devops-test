@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: python-microservice
+  namespace: tech-prod
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: python-microservice
+  template:
+    metadata:
+      labels:
+        app: python-microservice
+    spec:
+      automountServiceAccountToken: false
+      containers:
+      - name: python-microservice
+        image: omaciasd/python-microservice:v0.0.8
+        resources:
+          requests:
+            memory: "2Gi"
+            cpu: "500m"
+          limits:
+            memory: "3Gi"
+            cpu: "1"
+        ports:
+        - containerPort: 5000
+        env:
+        - name: NETWORK
+          value: "internal-prod"
+      restartPolicy: Always

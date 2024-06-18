@@ -1,0 +1,15 @@
+services:
+  python-microservice:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: omaciasd/python-microservice:last
+    ports:
+      - 5000:5000
+    volumes:
+      - .:/app
+    environment:
+      - FLASK_APP=myapp:create_app
+      - FLASK_ENV=production
+    command: ["python", "-m", "myapp"]
+    restart: always
