@@ -1,9 +1,11 @@
 # How to deploy
 
+![alt text][diagram]
+
 ## Clone the repo to your local infra
 
 ``` git
-git clone --recursive --depth=1 https://github.com/omaciasd/devops-test.git --progress
+git clone --recursive --depth=1 https://github.com/omaciasd/devops-test.git --progress; cd .\devops-test\
 ```
 
 ## Publish the App Docker Images
@@ -21,7 +23,7 @@ docker images
 docker scout cves python-microservice:last
 ```
 
-![alt text](image-3.png)
+![alt text][docker]
 
 ### Second: Login into Docker Hub Platfform
 
@@ -30,7 +32,7 @@ docker login
 docker push omaciasd/python-microservice:v0.0.7
 ```
 
-![alt text](image.png)
+![alt text][hub]
 
 ### Validate Actual image
 
@@ -71,9 +73,9 @@ kubectl delete pods -l app=python-microservice -n tech-prod
 kubectl get pods -n tech-prod
 ```
 
-![alt text](image-4.png)
+![alt text][web]
 
-![alt text](image-1.png)
+![alt text][kubernetes]
 
 ## For the next files, I don´t have any account or labs for run  and validate the goals
 
@@ -86,3 +88,9 @@ kubectl get pods -n tech-prod
 #### I´m Sorry for the late, Thank's for you account me
 
 #### Any question, My WhatsApp account: +57 305 828 8031
+
+[docker]: assets/images/docker.png
+[hub]: assets/images/hub.png
+[web]: assets/images/web.png
+[diagram]: assets/images/diagram.png
+[kubernetes]: assets/images/kubernetes.png
